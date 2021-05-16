@@ -42,4 +42,4 @@ np_array = numpy.array(imouto.audio.get_array_of_samples())
 ### Future  
 It's still just a basic voice converter, but I'm hoping to add advanced voice quality conversion as well.  
 　  
-最後まで読んでくれてありがとう お兄ちゃん！
+紳士向けREADME版を最後まで読んでくれるなんてやさしいね！  ありがとう お兄ちゃん！
