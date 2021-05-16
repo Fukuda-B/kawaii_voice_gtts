@@ -4,19 +4,19 @@
 ## Usage  
 Apply basic voice pack1.
 ```
-imouto = Kawaii_voice('voice.mp3')  
-result = imouto.voice_pack1()
+v_data = Kawaii_voice('voice.mp3')  
+result = v_data.voice_pack1()
 ```
 Apply pitch change.
 ```
-imouto = Kawaii_voice('voice.mp3')  
-result = imouto.pitch(2.0)
+v_data = Kawaii_voice('voice.mp3')  
+result = v_data.pitch(2.0)
 ```  
 　  
 Note: Audio data is passed as pydub.AudioSegment.  
 AudioSegment. You can also convert it with numpy as follows  
 ```
-np_array = numpy.array(imouto.audio.get_array_of_samples())
+np_array = numpy.array(v_data.audio.get_array_of_samples())
 ```
 
 ## Function
