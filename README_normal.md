@@ -1,5 +1,5 @@
 # kawaii_voice_gtts  
-音声変換拡張モジュール (Audio Conversion Extension Module)  
+Audio Conversion Extension Module  
 
 ## Usage  
 Apply basic voice pack1.
