@@ -14,13 +14,13 @@ class kawaii_voice:
 
     def __init__(self, filen):
         self.filen = filen
-        if self.filen.endwith('.mp3'):
+        if self.filen.endswith('.mp3'):
             self.codec = 'mp3'
             self.audio = pydub.AudioSegment.from_mp3(self.filen)
-        elif self.filen.endwith('.wav'):
+        elif self.filen.endswith('.wav'):
             self.codec = 'wav'
             self.audio = pydub.AudioSegment.from_wav(self.filen)
-        elif self.filen.endwith('.ogg'):
+        elif self.filen.endswith('.ogg'):
             self.codec = 'ogg'
             self.audio = pydub.AudioSegment.from_ogg(self.filen)
         else:
