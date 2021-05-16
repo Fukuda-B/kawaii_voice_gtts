@@ -1,5 +1,5 @@
 # kawaii_voice_gtts  
-音声変換拡張モジュール (Audio Conversion Extension Module)  
+Audio Conversion Extension Module  
 For the general public, please refer to [README_normal.md](./README_normal.md).  
   
 ![top_illust_11](https://user-images.githubusercontent.com/60131202/118388452-884f9f80-b65f-11eb-90b4-4fea4db32db3.png)
