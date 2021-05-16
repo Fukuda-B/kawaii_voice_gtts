@@ -7,7 +7,7 @@ Audio Conversion Module
   
 ```
   
-![sub_illust_2](https://user-images.githubusercontent.com/60131202/118389596-92749c80-b665-11eb-8ee0-d251c32dbac1.png)
+![sub_illust_3](https://user-images.githubusercontent.com/60131202/118389684-eb443500-b665-11eb-8907-7b9e3cf60e14.png)
 ---
 ### Option
 
