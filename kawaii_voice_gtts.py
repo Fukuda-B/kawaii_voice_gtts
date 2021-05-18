@@ -1,7 +1,13 @@
 import os
 import numpy
 import pydub
+from pydub.playback import play
 import pyworld
+
+"""
+    pydub.playback issue:
+    https://github.com/jiaaro/pydub/issues/209#issuecomment-375679542
+"""
 
 class Error(Exception):
     pass
@@ -34,7 +40,7 @@ class kawaii_voice:
         _f0_val, _time = pyworld.dio(np_arr, self.audio.frame_rate) # 基本周波数
         spct = pyworld.cheaptrick(np_arr, _f0_val, _time, self.audio.frame_rate) # スペクトル包絡
         aper = pyworld.d4c(np_arr, _f0_val, _time, self.audio.frame_rate) # 非周期性指標
-        
+
         return self
 
     def speed(self, val):
@@ -53,7 +59,7 @@ class kawaii_voice:
         self.audio = self.audio._spawn(self.audio.raw_data, overrides={"frame_rate": nsample_rate})
         self.audio = self.audio.set_frame_rate(self.audio.frame_rate)        
         return self
-    
+
     def volume(self, val):
         self.audio += val
         return self
@@ -73,3 +79,8 @@ class kawaii_voice:
     def music_pack1(self):
         ''' nightcore '''
         return
+
+if __name__ == '__main__':
+    imouto = kawaii_voice('voice.mp3')
+    result = imouto.pitch(1.2)
+    play(result.audio)
