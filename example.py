@@ -7,8 +7,9 @@ txt = 'お兄ちゃん、すごいね！'
 
 gTTS(txt, lang='ja').save(file_name)
 imouto = kawaii_voice_gtts.kawaii_voice(file_name)
-imouto = imouto.speed(0.25)
-imouto = imouto.pitch(2.7)
+# imouto = imouto.formant(1.1, 1.5)
+# imouto = imouto.speed(2.0)
+imouto = imouto.pitch(1.0)
 imouto.audio.export('voice_.mp3', 'mp3')
 
 playsound('voice_.mp3')
