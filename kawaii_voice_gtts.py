@@ -1,6 +1,7 @@
 import os
 import numpy
 import pydub
+from pydub import effects
 from pydub.playback import play
 import pyworld
 
@@ -59,11 +60,20 @@ class kawaii_voice:
         self.audio += val
         return self
 
-    def bass_boost(self, val):
+    def bass_boost(self):
+        ''' 120Hz order=1 -> overlay '''
+        bass = self.audio.low_pass_filter(120)
+        self.audio = self.audio.overlay(bass)
         return self
 
-    def normalize(self, val):
-        self.audio = self.audio.effects.normalize(self.audio)
+    def high_boost(self):
+        ''' 3000Hz order=1 -> overlay '''
+        high = self.audio.high_pass_filter(3000)
+        self.audio = self.audio.overlay(high)
+        return self
+
+    def normalize(self):
+        self.audio = effects.normalize(self.audio)
         return self
 
 # -----
@@ -73,9 +83,9 @@ class kawaii_voice:
 
     def music_pack1(self):
         ''' nightcore '''
-        return
+        self = kawaii_voice.pitch(self, 0.2)
+        self = kawaii_voice.bass_boost(self)
+        self = kawaii_voice.normalize(self)
+        return self
 
-if __name__ == '__main__':
-    imouto = kawaii_voice('voice.mp3')
-    result = imouto.pitch(1.2)
-    play(result.audio)
+if __name__ == '__main__': pass
