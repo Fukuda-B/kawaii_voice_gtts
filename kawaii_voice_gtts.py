@@ -4,11 +4,6 @@ import pydub
 from pydub.playback import play
 import pyworld
 
-"""
-    pydub.playback issue:
-    https://github.com/jiaaro/pydub/issues/209#issuecomment-375679542
-"""
-
 class Error(Exception):
     pass
 
