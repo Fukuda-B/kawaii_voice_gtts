@@ -1,7 +1,4 @@
-from gtts import gTTS
 import kawaii_voice_gtts
-import pydub
-from pydub.playback import play
 from playsound import playsound
 
 file_name = 'music.mp3'
