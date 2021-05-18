@@ -32,11 +32,11 @@ np_array = numpy.array(imouto.audio.get_array_of_samples())
 | speed (value) | Change play speed. |
 | pitch (value) | Change audio pitch. |
 | valume (value) | Change audio volume. |
-| bass_boost () \[unimplemented\] | Bass boost using a low-pass filter. |
+| bass_boost () | Bass boost using a low-pass filter. |
 | normalize () | Normalize audio data. |
 |||
 | voice_pack1 () \[unimplemented\] | Audio conversion tuned for gTTS(ja) |
-| music_pack1 () \[unimplemented\] | Nightcore conversion. |
+| music_pack1 () | Nightcore conversion. |
 
 ---
 ### Future  
