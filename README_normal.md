@@ -25,7 +25,7 @@ np_array = numpy.array(v_data.audio.get_array_of_samples())
 ## Function
 | function | outline |
 --- | ---
-| formant (value、f0_rate) | The higher the value, the closer it is to a woman's voice. |
+| formant (value, f0_rate) | The higher the value, the closer it is to a woman's voice. |
 | speed (value) | Change play speed. |
 | pitch (value) | Change audio pitch. |
 | volume (value) | Change audio volume. |
