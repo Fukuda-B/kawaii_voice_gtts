@@ -1,6 +1,5 @@
 .dist
 __pycache__
-voice.mp3
-voice_.mp3
-music.mp3
-music_.mp3
+*.mp3
+*.wav
+!sample/*

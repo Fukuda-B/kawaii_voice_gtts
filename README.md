@@ -2,17 +2,17 @@
 Audio Conversion Extension Module  
 For the general public, please refer to [README_normal.md](./README_normal.md).  
   
-![top_illust_11](https://user-images.githubusercontent.com/60131202/118388452-884f9f80-b65f-11eb-90b4-4fea4db32db3.png)
+![top_illust_11](./illust/top_illust_12.png)
 ---
 ## Usage  
 Apply basic voice pack1.
 ```
-imouto = Kawaii_voice('voice.mp3')  
-result = imouto.voice_pack1()
+imouto = kawaii_voice('voice.mp3')  
+result = imouto.voice_pack2()
 ```
 Apply pitch change.
 ```
-imouto = Kawaii_voice('voice.mp3')  
+imouto = kawaii_voice('voice.mp3')  
 result = imouto.pitch(2.0)
 ```  
 　  
@@ -23,20 +23,33 @@ np_array = numpy.array(imouto.audio.get_array_of_samples())
 ```
 
 
-![sub_illust_3](https://user-images.githubusercontent.com/60131202/118389684-eb443500-b665-11eb-8907-7b9e3cf60e14.png)
+![sub_illust_3](./illust/sub_illust_3.png)
 ---
 ## Function
 | function | outline |
 --- | ---
-| formant (value) \[unimplemented\] | The higher the value, the closer it is to a woman's voice. |
+| formant (value) | The higher the value, the closer it is to a woman's voice. |
 | speed (value) | Change play speed. |
 | pitch (value) | Change audio pitch. |
 | valume (value) | Change audio volume. |
 | bass_boost () | Bass boost using a low-pass filter. |
 | normalize () | Normalize audio data. |
 |||
-| voice_pack1 () \[unimplemented\] | Audio conversion tuned for gTTS(ja) |
+| voice_pack1 () | Audio conversion (old ver.) |
+| voice_pack2 () | Audio conversion tuned for gTTS(ja) |
 | music_pack1 () | Nightcore conversion. |
+
+## Sample  
+| Voice source | option | source | result |
+| ----- | ----- | ----- | ----- |
+| gTTS | voice_pack2 | [voice_gtts.mp3](./sample/voice_gtts.mp3) | [voice_gtts_pack2.mp3](./sample/voice_gtts_pack2.mp3) |
+| pyttsx3 | formant(1.2, 1.7) | [voice_pyttsx3.mp3](./sample/voice_pyttsx3.mp3) | [voice_pyttsx3_formant.mp3](./sample/voice_pyttsx3_formant.mp3) |
+  
+| Sample code | |
+| ----- | ----- |
+| [example_voice.py](./example_voice.py)| gTTS ver. |
+| [example_voice2.py](./example_voice2.py) | pyttsx3 ver. | 
+| [example_music.py](./example_music.py) | convert song to Nightcore. |
 
 ---
 ### Future  
