@@ -25,12 +25,12 @@ np_array = numpy.array(v_data.audio.get_array_of_samples())
 ## Function
 | function | outline |
 --- | ---
-| formant (value) | The higher the value, the closer it is to a woman's voice. |
+| formant (value、f0_rate) | The higher the value, the closer it is to a woman's voice. |
 | speed (value) | Change play speed. |
 | pitch (value) | Change audio pitch. |
-| valume (value) | Change audio volume. |
-| bass_boost () | Bass boost using a low-pass filter. |
-| normalize () | Normalize audio data. |
+| volume (value) | Change audio volume. |
+| bass_boost (option) | Bass boost using a low-pass filter. |
+| normalize (option) | Normalize audio data. |
 |||
 | voice_pack1 () | Audio conversion (old ver.) |
 | voice_pack2 () | Audio conversion tuned for gTTS(ja) |
