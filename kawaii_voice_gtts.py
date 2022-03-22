@@ -3,6 +3,7 @@
 import pydub
 import pyworld
 import numpy as np
+from scipy import signal
 from pydub import effects
 from pydub.audio_segment import AudioSegment
 
@@ -74,6 +75,18 @@ class kawaii_voice:
 
     def bass_boost(self, opt):
         '''
+            low_pass_filter --> overlay
+        '''
+        # bass = self.audio.low_pass_filter(120)
+        # if opt == 0: self.audio = self.audio.overlay(bass)
+        bass = self.low_pass_filter(120, 200, 0.1, 3)
+        # if opt == 0: self.audio = self.overlay(self.audio, bass)
+        if opt == 0: self.audio = self.audio.overlay(bass)
+        elif opt == 1: self.audio = bass
+        return self
+
+    def bass_boost_old(self, opt):
+        '''
             opt = 0: 120Hz order=1 --> overlay 
             opt = 1: 120Hz order=1 --> over write
         '''
@@ -95,6 +108,54 @@ class kawaii_voice:
     def normalize(self):
         self.audio = effects.normalize(self.audio)
         return self
+
+    # def overlay(self, input_a, input_b):
+    #     input_a_np = np.array(input_a.get_array_of_samples())
+    #     input_b_np = np.array(input_b.get_array_of_samples())
+    #     print(input_a_np.shape)
+    #     print(input_b_np.shape)
+
+    #     res = AudioSegment(
+    #         np.maximum(input_b_np, input_b_np),
+    #         sample_width=input_a.sample_width,
+    #         frame_rate=input_a.frame_rate,
+    #         channels=input_a.channels,
+    #     )
+    #     return res
+
+    def low_pass_filter(self, fp, fs, g_pass, g_stop):
+        '''
+            Butterworth filter (low pass)
+
+            https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html
+            https://watlab-blog.com/2019/04/30/scipy-lowpass/
+        '''
+        samples = np.array(self.audio.get_array_of_samples())
+        channels = self.audio.channels
+        frame_rate = self.audio.frame_rate
+        # print(f'samples dim: {samples.ndim} / shape: {samples.shape}\nchannels: {channels}\nfame_rate: {frame_rate}')
+
+        fn = frame_rate/2
+        wp = fp/fn
+        ws = fs/fn
+        N, Wn = signal.buttord(wp, ws, g_pass, g_stop)
+        b, a = signal.butter(N, Wn, 'low')
+        sample_res = np.zeros(samples.shape[0], dtype=np.float64)
+
+        for i in range(channels):
+            sample_m = samples[i::channels]
+            sample_res[i::channels] = signal.filtfilt(b, a, sample_m) # チャンネルごとにフィルタを適用
+        # print(samples[1000000:1000010])
+        # print(sample_res[1000000:1000010])
+
+        # print(f'samples dim: {samples.ndim} / shape: {sample_res.shape}\nwidth: {self.audio.sample_width}')
+        res = AudioSegment(
+            sample_res.astype(np.int16).tobytes(),
+            sample_width=self.audio.sample_width,
+            frame_rate=frame_rate,
+            channels=channels,
+        )
+        return res
 
 # -----
     def voice_pack1(self):
