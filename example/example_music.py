@@ -1,5 +1,7 @@
 # Sample of converting music to nightcore
 
+import sys
+sys.path.append('../')
 import kawaii_voice_gtts
 from playsound import playsound
 

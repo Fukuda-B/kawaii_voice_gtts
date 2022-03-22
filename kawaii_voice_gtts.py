@@ -1,10 +1,10 @@
 # https://github.com/Fukuda-B/kawaii_voice_gtts
 
-import numpy as np
 import pydub
+import pyworld
+import numpy as np
 from pydub import effects
 from pydub.audio_segment import AudioSegment
-import pyworld
 
 class Error(Exception):
     pass
@@ -112,8 +112,9 @@ class kawaii_voice:
         ''' nightcore '''
         self = kawaii_voice.bass_boost(self, 0)
         # self = kawaii_voice.high_boost(self, 0)
-        self = kawaii_voice.pitch(self, 0.1)
-        # self = kawaii_voice.normalize(self)
+        # self = kawaii_voice.pitch(self, 0.1)
+        self = kawaii_voice.pitch(self, 1/12)
+        self = kawaii_voice.normalize(self)
         return self
 
 if __name__ == '__main__': pass

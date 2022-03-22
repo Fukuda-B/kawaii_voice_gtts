@@ -1,6 +1,8 @@
 # gTTS Ver.
 
+import sys
 from gtts import gTTS
+sys.path.append('../')
 import kawaii_voice_gtts
 from playsound import playsound
 

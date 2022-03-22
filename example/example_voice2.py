@@ -1,7 +1,9 @@
 # pyttsx3 Ver.
 
 import os
+import sys
 import pyttsx3
+sys.path.append('../')
 import kawaii_voice_gtts
 from playsound import playsound
 
